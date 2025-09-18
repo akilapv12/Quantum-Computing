@@ -1,0 +1,7 @@
+# Data Analyser - Favourite Fruits
+num_friends=int(input("Enter the number of friends you have: "))
+fruit_list = []     # List to store favourite fruits
+for i in range(num_friends):
+    fruits=input("Enter your favourite fruit: ")
+    fruit_list.append(fruits)   # Adds (appends) the favourite fruit of each person into a list.
+print("Your friends' favourite fruits are: ", fruit_list)
