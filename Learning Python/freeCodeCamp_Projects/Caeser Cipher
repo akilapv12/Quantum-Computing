@@ -9,16 +9,16 @@ text = str(input("Enter the text:- "))
 shift = int(input("Enter your shift number:- "))
 
 def caesar(text, shift, encrypt=True):
-    if not isinstance(shift, int):
+    if not isinstance(shift, int): #if shift is not integer
         return 'Shift must be an integer value.'
 
-    if shift < 1 or shift > 25:
+    if shift < 1 or shift > 25: #shift should be 1-25
         return 'Shift must be an integer between 1 and 25.'
 
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
     if not encrypt:
-        shift = - shift
+        shift = - shift #reverses shifting if encrypt is false
     
     shifted_alphabet = alphabet[shift:] + alphabet[:shift]
     translation_table = str.maketrans(alphabet + alphabet.upper(), shifted_alphabet + shifted_alphabet.upper())
@@ -29,16 +29,16 @@ def encrypt(text, shift):
     return caesar(text, shift)
     
 def decrypt(text, shift):
-    return caesar(text, shift, encrypt=False)
+    return caesar(text, shift, encrypt=False) #makes encrypt false so that shifting is reversed
 
 encrypted_text = encrypt(text, shift)
 decrypted_text = decrypt(text, shift)
 
-opperation = str(input("Would you like to encrypt or decrypt:- "))
-if opperation == "encrypt":
+operation = (input("Would you like to encrypt or decrypt:- ")).lower()
+if operation == "encrypt":
     print(encrypted_text)
-elif opperation == "decrypt":
+elif operation == "decrypt":
     print(decrypted_text)
 else:
     print("ERROR. INVALID OPPERATION.")
-    print("maybe  wrong spelling or wrong case")
+    print("maybe  wrong spelling....")
