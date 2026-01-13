@@ -1,5 +1,14 @@
-def caesar(text, shift, encrypt=True):
+#Caesar Cipher
+print("This is a Caesar Cipher")
+print("It can encrypt and decrypt text")
+print("by shifting the alphabets by any")
+print("specific value and using it as a")
+print("translation map.")
 
+text = str(input("Enter the text:- "))
+shift = int(input("Enter your shift number:- "))
+
+def caesar(text, shift, encrypt=True):
     if not isinstance(shift, int):
         return 'Shift must be an integer value.'
 
@@ -21,5 +30,15 @@ def encrypt(text, shift):
     
 def decrypt(text, shift):
     return caesar(text, shift, encrypt=False)
-encrypted_text = encrypt('freeCodeCamp', 3)
-print(encrypted_text)
+
+encrypted_text = encrypt(text, shift)
+decrypted_text = decrypt(text, shift)
+
+opperation = str(input("Would you like to encrypt or decrypt:- "))
+if opperation == "encrypt":
+    print(encrypted_text)
+elif opperation == "decrypt":
+    print(decrypted_text)
+else:
+    print("ERROR. INVALID OPPERATION.")
+    print("maybe  wrong spelling or wrong case")
