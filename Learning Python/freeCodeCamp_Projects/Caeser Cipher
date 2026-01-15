@@ -5,6 +5,7 @@ print("by shifting the alphabets by any")
 print("specific value and using it as a")
 print("translation map.")
 
+operation = (input("Would you like to encrypt or decrypt:- ")).lower()
 text = str(input("Enter the text:- "))
 shift = int(input("Enter your shift number:- "))
 
@@ -34,7 +35,6 @@ def decrypt(text, shift):
 encrypted_text = encrypt(text, shift)
 decrypted_text = decrypt(text, shift)
 
-operation = (input("Would you like to encrypt or decrypt:- ")).lower()
 if operation == "encrypt":
     print(encrypted_text)
 elif operation == "decrypt":
