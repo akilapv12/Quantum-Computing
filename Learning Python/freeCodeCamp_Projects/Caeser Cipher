@@ -10,7 +10,7 @@ text = str(input("Enter the text:- "))
 shift = int(input("Enter your shift number:- "))
 
 def caesar(text, shift, encrypt=True):
-    if not isinstance(shift, int): #if shift is not integer
+    if not isinstance(shift, int): #if shift is not integer decrypt
         return 'Shift must be an integer value.'
 
     if shift < 1 or shift > 25: #shift should be 1-25
