@@ -16,6 +16,6 @@ def apply_discount(price, discount):
         print("The discount% should be between 0 and 100.")
     else:
         discounted_value = price - (price * (discount/100))
-        print(discounted_value)
+        print(f"Discounted value: {discounted_value}")
 
 apply_discount(price, discount)
