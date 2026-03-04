@@ -1,0 +1,17 @@
+#Discounter:
+price = input("Original price: ")
+discount = input("Discount%: ")
+def apply_discount(price, discount):
+    if not isinstance(price, (int, float)):
+        print("The price should be a number.")
+    elif not isinstance(discount, (int, float)):
+        print("The discount should be a number.")
+    elif price<=0:
+        print("The price should be more than 0.")
+    elif discount<0 or discount>100:
+        print(f"The discount% should be between 0 and 100.")
+    else:
+        discounted_price = price - (price * (discount/100))
+        print(f"Discounted value: {discounted_price}")
+
+apply_discount(price, discount)
