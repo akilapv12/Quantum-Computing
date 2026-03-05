@@ -33,6 +33,9 @@ try:
                  print("Bot wins!")
                  print("\nScore:")
                  print(f"You: {player} | Bot: {bot}")
+        print("\nFinal Score:")
+        print(f"You: {player} | Bot: {bot}")
+        print("Bot wins!")
         print("\n\nThis is a joke, the game made for bot to win always!")
 except ValueError:
     print("'Best of' must be a natural number.")
