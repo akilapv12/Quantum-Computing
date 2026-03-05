@@ -21,7 +21,6 @@ try:
             play = input("Your play: ").strip().lower() # removes unnesacary spaces, and lowers all letters
             if play!="rock" and play!="paper" and play!="scissors":
                  print("Invalid Play, try again.")
-                 continue
             else:
                  if play=="rock":
                      bot_play = "paper"
