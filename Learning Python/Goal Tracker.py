@@ -11,3 +11,7 @@ if  len(done) < len(tasks):
     for i in sorted(map(int, done), reverse=True): #map() makes the contents of done into int.
         tasks.pop(i)                               #sorted() reverse=true makes it in descending order.
     print("Remaining tasks are:", tasks)           #tasks.pop(1) removes each number.
+
+    # incomplete project.
+    # i feel this project useless and still above my level of understanding.
+    # not intrested in completing by getting help from other soures.
