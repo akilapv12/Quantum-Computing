@@ -23,10 +23,12 @@ required_folders = [
     "MyOthers"
     ]
 def check_subfolders(folder):
+    print("Checking for required subfolders.....")
     items = os.listdir(folder)
     for subfolder in required_folders:
         if subfolder not in items:
             os.mkdir(os.path.join(folder, subfolder))
+            print(f"Made {os.path.join(folder, subfolder)} ✔️")
     scan_new_items(folder)
 
 image_ext = [
@@ -75,6 +77,7 @@ def scan_new_items(folder):
     global music_count, program_count, archive_count, other_count
     global image_files, video_files, document_files
     global music_files, program_files, archive_files, other_files
+    print("Scanning for new items.....")
     items = os.listdir(folder)
     for item in items:
         item_path = os.path.join(folder, item)
@@ -102,6 +105,31 @@ def scan_new_items(folder):
             else:
                 other_count += 1
                 other_files.append(item)
+    print("Scan complete ✔️")
+    show_summary(folder)
+
+def show_summary(folder):
+    total_items_count = image_count + video_count + document_count + music_count + program_count + archive_count + other_count
+    print(f"{total_items_count} new items found.")
+    print(f"Images :      {image_count}")
+    print(f"Videos :      {video_count}")
+    print(f"Documents :   {document_count}")
+    print(f"Music :       {music_count}")
+    print(f"Programs :    {program_count}")
+    print(f"Archives :    {archive_count}")
+    print(f"Other :       {other_count}")
+    get_confirmation(folder)
+
+def get_confirmation(folder):
+    confirmation = input("Proceed to move files? (Enter):")
+    if get_confirmation == "":
+        organize_files(folder)
+    else:
+        print("...INTERRUPTED...")
+
+def organize_files(folder):
+    print("")
+
 
 
 def main():
