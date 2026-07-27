@@ -7,7 +7,7 @@ folder = input("Enter the path of the folder you want to organize: ")
 
 def check_folder(folder):
     print("Checking folder.....")
-    if os.path.exists(folder):
+    if os.path.isdir(folder):
         print("Folder Exists ✔️")
         check_subfolders(folder)
     else:
@@ -63,20 +63,45 @@ music_count = 0
 program_count = 0
 archive_count = 0
 other_count = 0
+image_files = []
+video_files = []
+document_files = []
+music_files = []
+program_files = []
+archive_files = []
+other_files = []
 def scan_new_items(folder):
+    global image_count, video_count, document_count
+    global music_count, program_count, archive_count, other_count
+    global image_files, video_files, document_files
+    global music_files, program_files, archive_files, other_files
     items = os.listdir(folder)
     for item in items:
-        if item not in required_folders:
+        item_path = os.path.join(folder, item)
+        if item not in required_folders and os.path.isfile(item_path):
             name, ext = os.path.splitext(item)
+            ext = ext.lower()
             if ext in image_ext:
                 image_count += 1
+                image_files.append(item)
             elif ext in video_ext:
                 video_count += 1
+                video_files.append(item)
             elif ext in document_ext:
                 document_count += 1
+                document_files.append(item)
             elif ext in music_ext:
                 music_count += 1
-            elif
+                music_files.append(item)
+            elif ext in program_ext:
+                program_count += 1
+                program_files.append(item)
+            elif ext in archive_ext:
+                archive_count += 1
+                archive_files.append(item)
+            else:
+                other_count += 1
+                other_files.append(item)
 
 
 def main():
