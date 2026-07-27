@@ -128,8 +128,27 @@ def get_confirmation(folder):
         print("...INTERRUPTED...")
 
 def organize_files(folder):
-    print("")
-
+    for item in image_files:
+        shutil.move((os.path.join(folder, item)),(os.path.join(folder, "MyImages", item)))
+    print("Images moved ✔️")
+    for item in video_files:
+        shutil.move((os.path.join(folder, item)),(os.path.join(folder, "MyVideos", item)))
+    print("Videos moved ✔️")
+    for item in document_files:
+        shutil.move((os.path.join(folder, item)),(os.path.join(folder, "MyDocuments", item)))
+    print("Documents moved ✔️")
+    for item in music_files:
+        shutil.move((os.path.join(folder, item)),(os.path.join(folder, "MyMusic", item)))
+    print("Music moved ✔️")
+    for item in program_files:
+        shutil.move((os.path.join(folder, item)),(os.path.join(folder, "MyPrograms", item)))
+    print("Programs moved ✔️")
+    for item in archive_files:
+        shutil.move((os.path.join(folder, item)),(os.path.join(folder, "MyArchives", item)))
+    print("Archives moved ✔️")
+    for item in other_files:
+        shutil.move((os.path.join(folder, item)),(os.path.join(folder, "MyOthers", item)))
+    print("Others moved ✔️")
 
 
 def main():
