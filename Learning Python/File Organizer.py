@@ -3,7 +3,11 @@
 import os
 import shutil
 
-folder = input("Enter the path of the folder you want to organize: ")
+print("--------------------")
+print("   FILE ORGANIZER   ")
+print("--------------------")
+
+folder = input("\nEnter the path of the folder you want to organize: ")
 
 def check_folder(folder):
     print("Checking folder.....")
@@ -23,12 +27,14 @@ required_folders = [
     "MyOthers"
     ]
 def check_subfolders(folder):
-    print("Checking for required subfolders.....")
+    print("\nChecking for required subfolders.....")
     items = os.listdir(folder)
     for subfolder in required_folders:
         if subfolder not in items:
             os.mkdir(os.path.join(folder, subfolder))
             print(f"Made {os.path.join(folder, subfolder)} ✔️")
+        else:
+            print(f"{subfolder} found ✔️")
     scan_new_items(folder)
 
 image_ext = [
@@ -77,7 +83,7 @@ def scan_new_items(folder):
     global music_count, program_count, archive_count, other_count
     global image_files, video_files, document_files
     global music_files, program_files, archive_files, other_files
-    print("Scanning for new items.....")
+    print("\nScanning for new items.....")
     items = os.listdir(folder)
     for item in items:
         item_path = os.path.join(folder, item)
@@ -106,11 +112,11 @@ def scan_new_items(folder):
                 other_count += 1
                 other_files.append(item)
     print("Scan complete ✔️")
-    show_summary(folder)
+    show_preview(folder)
 
-def show_summary(folder):
+def show_preview(folder):
     total_items_count = image_count + video_count + document_count + music_count + program_count + archive_count + other_count
-    print(f"{total_items_count} new items found.")
+    print(f"\n{total_items_count} new items found.")
     print(f"Images :      {image_count}")
     print(f"Videos :      {video_count}")
     print(f"Documents :   {document_count}")
@@ -121,13 +127,14 @@ def show_summary(folder):
     get_confirmation(folder)
 
 def get_confirmation(folder):
-    confirmation = input("Proceed to move files? (Enter):")
-    if get_confirmation == "":
+    confirmation = input("\nProceed to move files? (Enter):")
+    if confirmation == "":
         organize_files(folder)
     else:
-        print("...INTERRUPTED...")
+        print("\n...INTERRUPTED...")
 
 def organize_files(folder):
+    print("")
     for item in image_files:
         shutil.move((os.path.join(folder, item)),(os.path.join(folder, "MyImages", item)))
     print("Images moved ✔️")
@@ -149,7 +156,17 @@ def organize_files(folder):
     for item in other_files:
         shutil.move((os.path.join(folder, item)),(os.path.join(folder, "MyOthers", item)))
     print("Others moved ✔️")
+    print("\nAll files have been moved successfully.")
+    show_stats(folder)
 
+def show_stats(folder):
+    total_files = 0
+    print("")
+    for subfolder in required_folders:
+        count = len(os.listdir(os.path.join(folder, subfolder)))
+        print(f"{subfolder}: {count}")
+        total_files += count
+    print(f"\nTotal files: {total_files}")
 
 def main():
     check_folder(folder)
