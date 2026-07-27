@@ -7,7 +7,7 @@ print("--------------------")
 print("   FILE ORGANIZER   ")
 print("--------------------")
 
-folder = input("\nEnter the path of the folder you want to organize: ")
+folder = input("\nEnter the path of the folder you want to organize: ").strip().strip('"')
 
 def check_folder(folder):
     print("Checking folder.....")
