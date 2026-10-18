@@ -40,7 +40,7 @@ stage_3 = '''
   |---------|
   |         |
   |         O
-  |         | \
+  |         | \\
   |         
   |                          
 _____
@@ -51,7 +51,7 @@ stage_4 = '''
   |---------|
   |         |
   |         O
-  |       / | \
+  |       / | \\
   |         
   |                          
 _____
@@ -62,7 +62,7 @@ stage_5 = '''
   |---------|
   |         |
   |         O
-  |       / | \
+  |       / | \\
   |          \\ 
   |                          
 _____
@@ -73,7 +73,7 @@ stage_6 = '''
   |---------|
   |         |
   |         O
-  |       / | \
+  |       / | \\
   |        / \\ 
   |                          
 _____
@@ -135,45 +135,45 @@ for letter in country:
 lives = 6
 
 
-# display = ''
-# for letter in country:
-#     if letter in alphabets:
-#         display += '_ '
-#     elif letter == ' ':
-#         display += '  '
-#     else:
-#         print('ERROR')
-#         sys.exit()
+display = ''
+for letter in country:
+    if letter in alphabets:
+        display += '_ '
+    elif letter == ' ':
+        display += '  '
+    else:
+        print('ERROR')
+        sys.exit()
 
-# wrong_quesses = []
+wrong_quesses = []
 
-# while len(letters_in_country) != 0:
-#     print('Lives left: ', (lives*'•')+((6-lives)*'৹'))
-#     print(stages[(6-lives)])
-#     print(display)
-#     print("Wrong guesses: ", wrong_quesses)
-#     guess = input("Guess a letter: ").upper()
-#     if guess.upper() in alphabets:
-#         if guess in letters_in_country:
-#             for letter in letters_in_country:
-#                 if letter == guess:
-#                     letters_in_country.remove(guess)
-#             display = ''
-#             for letter in country:
-#                 if letter == guess:
-#                     display += guess
-#                 elif letter == ' ':
-#                     display += '  '
-#                 elif letter != guess and letter in letters_in_country:
-#                     display += "_ "
-#                 else:
-#                     print('ERROR')
-#                     sys.exit()
-#             print("Correct!")        
-#         else:
-#             print("Wrong!")
-#             lives -= 1
-#             wrong_quesses.append(guess)
-#     else:
-#         print("ERROR: not recognized alphabet")
-#         sys.exit()
+while len(letters_in_country) != 0:
+    print('Lives left: ', (lives*'•')+((6-lives)*'৹'))
+    print(stages[(6-lives)])
+    print(display)
+    print("Wrong guesses: ", wrong_quesses)
+    guess = input("Guess a letter: ").upper()
+    if guess.upper() in alphabets:
+        if guess in letters_in_country:
+            for letter in letters_in_country:
+                if letter == guess:
+                    letters_in_country.remove(guess)
+            display = ''
+            for letter in country:
+                if letter == guess:
+                    display += guess
+                elif letter == ' ':
+                    display += '  '
+                elif letter != guess and letter in letters_in_country:
+                    display += "_ "
+                else:
+                    print('ERROR')
+                    sys.exit()
+            print("Correct!")        
+        else:
+            print("Wrong!")
+            lives -= 1
+            wrong_quesses.append(guess)
+    else:
+        print("ERROR: not recognized alphabet")
+        sys.exit()
