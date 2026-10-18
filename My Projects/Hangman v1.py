@@ -132,51 +132,61 @@ country_list = [
 ]
 alphabets = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 
-print("\nWelcome to Hangman!")
+while True:
+    print("\nWelcome to Hangman!")
 
-country = random.choice(country_list)
-letters_in_country = []
-for letter in country:
-    if letter not in letters_in_country and letter != " ":
-        letters_in_country.append(letter)
-correct_guesses = []
-wrong_guesses = []
-lives = 6
-while len(letters_in_country) != 0 and lives != 0:
-    print(f"\nLives left: {(lives*"•")+((6-lives)*"৹")}")
-    print(stages[6-lives])
-    display = ""
+    country = random.choice(country_list)
+    letters_in_country = []
     for letter in country:
-        if letter in correct_guesses:
-            display += letter
-        elif letter in letters_in_country:
-            display += "_ "
-        elif letter == " ":
-            display += " "
-    print(display)
-    print("\nWrong guesses:", wrong_guesses)
-    guess = input("Guess a letter: ").upper()
-    if guess not in alphabets:
-        print("\nNot an alphabet. Try again.")
-    elif guess in letters_in_country:
-        print("\nCorrect!")
-        correct_guesses.append(guess)
-        letters_in_country.remove(guess)
-    elif guess in correct_guesses or guess in wrong_guesses:
-        print("\nAlready guessed. Try again.")
-    elif guess not in letters_in_country:
-        print("\nWrong!")
-        lives -= 1
-        wrong_guesses.append(guess)
+        if letter not in letters_in_country and letter != " ":
+            letters_in_country.append(letter)
+    correct_guesses = []
+    wrong_guesses = []
+    lives = 6
+    while len(letters_in_country) != 0 and lives != 0:
+        print(f"\nLives left: {(lives*"•")+((6-lives)*"৹")}")
+        print(stages[6-lives])
+        display = ""
+        for letter in country:
+            if letter == " ":
+                display += "  "
+            elif letter in correct_guesses:
+                display += letter + " "
+            else:
+                display += "_ "
+        print(display)
+        print("\nWrong guesses:", wrong_guesses)
+        guess = input("Guess a letter: ").upper()
+        if guess not in alphabets:
+            print("\nNot an alphabet. Try again.")
+        elif guess in letters_in_country:
+            print("\nCorrect!")
+            correct_guesses.append(guess)
+            letters_in_country.remove(guess)
+        elif guess in correct_guesses or guess in wrong_guesses:
+            print("\nAlready guessed. Try again.")
+        elif guess not in letters_in_country:
+            print("\nWrong!")
+            lives -= 1
+            wrong_guesses.append(guess)
+        else:
+            print("\nERROR")
+            sys.exit()
+    if lives == 0:
+        print(stages[6])
+        print(f"\nYou Lost! The country was {country}.")
+    elif len(letters_in_country) == 0:
+        print(safe)
+        print(f"\nVictory! You got it, the country was {country}!")
     else:
-        print("\nERROR")
+        print("ERROR")
         sys.exit()
-if lives == 0:
-    print(stages[6])
-    print(f"\nYou Lost! The country was {country}.")
-elif len(letters_in_country) == 0:
-    print(safe)
-    print(f"\nVictory! You got it, the country was {country}!")
-else:
-    print("ERROR")
-    sys.exit()
+    play_again = input("\nPlay again? (Y/N): ").upper()
+    if play_again == "Y":
+        continue
+    elif play_again == "N":
+        print("\nThanks for playing!")
+        break
+    else:
+        print("\nInvalid input. Exiting game.")
+        break
